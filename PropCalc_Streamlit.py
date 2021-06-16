@@ -22,50 +22,51 @@ st.write("""
 # col3.button("Traditional LTR")
 # col4.button("BRRRR")
 
-col1, col2, col3 = st.beta_columns((1,1,1))
+col1, col2, col3, col4, col5 = st.beta_columns((2,0.35,2,0.35,2))
+
+col1.write("""
+
+### Rental Income
+
+	""")
+ 
+rent_income = col1.number_input("Expected Rent Income") 
 
 # One Time Expenses
-col1.write("""
+col3.write("""
 
 ### One Time Expenses
 
 	""")
 
-closing_costs = col1.number_input("Closing Costs")
-repair_costs = col1.number_input("Rehab Costs")
-
+closing_costs = col3.number_input("Closing Costs")
+repair_costs = col3.number_input("Rehab Costs") 
 
 # Recurring Expenses
-col2.write("""
+col5.write("""
 
 ### Recurring Expenses
 
 	""")
 
-with col2.beta_expander("Taxes & Insurance"):
+with col5.beta_expander("Taxes & Insurance"):
 	annual_property_taxes = st.number_input("Annual Property Taxes")
 	annual_insurance = st.number_input("Annual Insurance")
 
 # Reserves/CapEx
-with col2.beta_expander("Reserves/Management (% of Income)"):
+with col5.beta_expander("Reserves/Management (% of Income)"):
 
 	maintenance = st.number_input("Maintenance", .00)
 	vacancy = st.number_input("Vacancy", .00)
 	capEx = st.number_input("CapEx", .00)
 	management = st.number_input("Management", 0.00)
 
-with col2.beta_expander("Other"):
+with col5.beta_expander("Other"):
 	HOA = st.number_input("HOA")
 	utilities = st.number_input("Utilities")
 
 
-col3.write("""
 
-### Rental Income
-
-	""")
- 
-rent_income = col3.number_input("Expected Rent Income")  
 
 # Loan details
 st.sidebar.header("Loan Details")
@@ -140,11 +141,11 @@ st.write("""
 
 col_a, col_b, col_c, col_d, col_e = st.beta_columns(5)
 
-col_a.write("""Cash Flow Before Reserves""")
+col_a.write("""Cash Flow""")
 col_a.write(round(cash_flow,2))
 
-col_b.write("""Cash Flow After Reserves""")
-col_b.write(round((cash_flow - ((rent_income*maintenance)+(rent_income*vacancy)+(rent_income*capEx))),2))
+col_b.write("""Cash Flow w/o Reserves""")
+col_b.write(round(cash_flow + reserves,2))
 
 col_c.write("""CoC Return (%)""")
 col_c.write(round(CoC,2))
