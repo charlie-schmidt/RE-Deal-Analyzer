@@ -101,6 +101,7 @@ NOI = (rent_income*12)-(total_monthly_expenses*12)
 cap_rate = NOI/purchase_price
 
 
+
 # Monthly Expenses Overview 
 
 # st.write("""## Monthly Expenses Overview""")
@@ -150,11 +151,11 @@ col_b.write(round(cash_flow + reserves,2))
 col_c.write("""CoC Return (%)""")
 col_c.write(round(CoC,2))
 
-col_d.write("""NOI""")
-col_d.write(round(NOI, 2))
+# col_d.write("""NOI""")
+# col_d.write(round(NOI, 2))
 
-col_e.write("""Cap Rate""")
-col_e.write(round(cap_rate,2))
+# col_e.write("""Cap Rate""")
+# col_e.write(round(cap_rate,2))
 
 
 # Specific to STR
